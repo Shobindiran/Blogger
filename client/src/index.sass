@@ -1,0 +1,147 @@
+// variables declarations
+$primary-color-1: #4746D7
+$primary-color-2: #FFFFFF
+$secodary-color-1: #DBDBF7
+// breakpoints 
+$small-screen: 576px
+$medium-screen: 768px
+$large-screen: 992px
+
+
+
+// defaults
+*
+    padding: 0px
+    margin: 0px
+    box-sizing: border-box
+
+h1,h2,h3,h4,h5,h6,p,div
+    padding: 0px
+    margin: 0px
+
+// common stylings
+.mybtn
+    padding: 5px 20px
+    border-radius: 10px
+    
+.mybtn.solid
+    background-color: $primary-color-2
+    border: 1px solid $primary-color-1
+    color: $primary-color-1
+
+    &:hover    
+        background-color: transparent
+        color: $primary-color-2
+        border: 1px solid $primary-color-2
+
+        
+
+.mybtn.outlined   
+    color: $primary-color-2
+    border: 1px solid $primary-color-2
+
+    &:hover
+        background-color: $primary-color-2
+        color: $primary-color-1
+
+// Header component
+header
+    background-color: $primary-color-1 
+    padding-block: 15px 
+    height: 10vh
+
+    .header-wrapper
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+        .logo
+            display: flex
+            justify-content: center
+            align-items: center
+            gap: 5px
+
+            .logo-icon
+                font-size: 30px
+        
+        a 
+            color: $primary-color-2
+            text-decoration: none
+
+        nav
+            display: flex
+            gap: 20px
+            align-items: center
+
+
+// Signup page
+.signup
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 90vh
+    
+    .container
+        max-width: 700px
+        
+        .signup-wrapper
+            background-color: $secodary-color-1
+            padding: 80px 40px
+            border-radius: 20px
+            @includesmall-screen
+                padding: 50px 10px
+
+
+
+
+// media queries mixins
+@mixin small-screen 
+  @media screen and (min-width: $small-screen) 
+    @content
+  
+
+
+@mixin medium-screen 
+  @media screen and (max-width: $medium-screen) 
+    @content
+  
+
+
+@mixin large-screen 
+  @media screen and (max-width: $large-screen) 
+    @content
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+h1
+    text-align: center
+    // color: $primary-color-1
+    // font-size: 100px
