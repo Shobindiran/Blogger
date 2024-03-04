@@ -20,8 +20,8 @@ mongoose.connect("mongodb+srv://shobindiran:Bzi9TfavCNDEPrDi@blogger.cjnixmb.mon
 // app.get("/",(req,res)=>{
 //     res.json("hello world")
 // });
-// mongodb+srv://shobindiran:Bzi9TfavCNDEPrDi@blogger.cjnixmb.mongodb.net/?retryWrites=true&w=majority&appName=Blogger
 
+// signup
 app.post("/signup",async (req,res)=>{
     const {username,password} = req.body;
 
@@ -42,11 +42,11 @@ app.post("/signup",async (req,res)=>{
     }
 });
 
-
+// login
 app.post("/login",async (req,res)=>{
     const {username,password} = req.body;
 
-    try{
+    try{ 
         const userDoc = await User.findOne({username});
         let grantAccess = false;
         if(userDoc){
@@ -56,7 +56,7 @@ app.post("/login",async (req,res)=>{
                 res.json({grantAccess});
             }
             else{
-                res.json({error:"Password didn't match"});
+                res.json({error:"Incorrect Password"});
             }
         }
         else{

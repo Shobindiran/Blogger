@@ -1,10 +1,15 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = () => {
 
   const [username,setUsername] = useState("");
   const [password,setPassword] = useState("");
-  const [errorMessage,setErrorMessage] = useState("");
+  const navigate = useNavigate();
+
 
   const login = async (e)=>{
     e.preventDefault();
@@ -20,10 +25,33 @@ const Login = () => {
     const {grantAccess,error} = data;
 
     if(grantAccess){
-      setErrorMessage("Succesfully logged in")
+      toast.success(`Successfully logged in`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition:Bounce
+        });
+
+        navigate('/')
+        
     }
     else{
-      setErrorMessage(error);
+      toast.error(`${error}`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition:Bounce
+        });
     }
   }
 
@@ -41,13 +69,22 @@ const Login = () => {
               <label htmlFor="password" className="form-label">Password</label>
               <input type="password" className="form-control" value={password} onChange={e=>setPassword(e.target.value)}/>
             </div>
-            <p>{errorMessage}</p>
             <button type="submit" className="mybtn solid">Submit</button>
           </form>
         </div> 
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </div>
     </section>
   )
 }
-
 export default Login
